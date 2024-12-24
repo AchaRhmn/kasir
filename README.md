@@ -6,3 +6,4 @@
 ## 🚀 About Me
 just a spect of dust flying in the universe. 
 
+(kumalaz membuat readme)
