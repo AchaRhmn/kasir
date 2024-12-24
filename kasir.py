@@ -6,7 +6,7 @@ while True :
 
         # deklarasi input dan variable
         jml = float(input("\nmasukkan jumlah belanja : "))
-        mem = input("apakah anda punya member? (Y/N) : ")
+        mem = input("apakah anda punya member? (Y/N) : ").strip().lower()
         disk = 0
         
         # pengecekan member
