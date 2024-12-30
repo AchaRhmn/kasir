@@ -8,7 +8,7 @@ def produk():
     }
     return dafpro
 
-
+# fungsi perkondisian member
 def member(mem):
     
     if mem == "y":
@@ -19,6 +19,7 @@ def member(mem):
         print("Input tidak valid!")
         return None  
 
+# fungsi pengkondisian diskon
 def diskon(jml):
  
     if jml > 200000 :
@@ -31,6 +32,7 @@ def diskon(jml):
         print("invalid")
         return None
 
+# fungsi proses pembayaran
 def proses_pembayaran(jml, diskon, member):
     disk = diskon + member
     ttldisk = jml * (disk/100)
@@ -57,6 +59,7 @@ while True :
         print("\n==============================================\n")
         print("opsi : 00 - input barang")
         print("       99 - cetak struk")
+        print("       111 - keluar")
         pilih = int(input("\npilih opsi : "))
         
         if pilih == 00 : #input barang
@@ -67,9 +70,9 @@ while True :
 
                 if barang in dafpro:
                     print(f"Produk : {dafpro[barang]['nama']} - {dafpro[barang]['harga']}")
-                    stk = int(input("Masukkan jumlah produk : "))
+                    qty = int(input("Masukkan jumlah produk : "))
 
-                    if stk <= 0 :
+                    if qty <= 0 :
                         print('jumlah produk harus lebih dari 0')
                         continue
 
@@ -77,20 +80,20 @@ while True :
                     adaproduk = False
                     for i in total_barang :
                         if i['nama'] == dafpro[barang]['nama'] :
-                            i['jumlah'] += stk
+                            i['jumlah'] += qty
                             i['subtotal'] = i['harga']*i['jumlah']
-                            jml += dafpro[barang]['harga']*stk
+                            jml += dafpro[barang]['harga']*qty
                             
                             adaproduk = True
                             print(f"terinput : {i['jumlah']} x {dafpro[barang]['nama']}. Subtotal: {i['subtotal']}\n")   
 
                                    
                     if not adaproduk :
-                        subtotal = dafpro[barang]['harga'] * stk
-                        total_barang.append({"nama" :dafpro[barang]['nama'], "harga":dafpro[barang]['harga'], "jumlah" : stk, "subtotal":subtotal})
+                        subtotal = dafpro[barang]['harga'] * qty
+                        total_barang.append({"nama" :dafpro[barang]['nama'], "harga":dafpro[barang]['harga'], "jumlah" : qty, "subtotal":subtotal})
                         jml += subtotal
 
-                        print(f"terinput : {stk} x {dafpro[barang]['nama']}. Subtotal: {subtotal}\n")
+                        print(f"terinput : {qty} x {dafpro[barang]['nama']}. Subtotal: {subtotal}\n")
 
                 elif barang.lower() == "e": 
                     break
@@ -101,7 +104,7 @@ while True :
         elif pilih == 99:  # Cetak struk
             
             if not total_barang:
-                print("\produk kosong. Tidak ada yang bisa dicetak.\n")
+                print("\nproduk kosong. Tidak ada yang bisa dicetak.\n")
                 continue
             
             print("\n","="*50,"\n")
@@ -134,7 +137,10 @@ while True :
             else :
                 print("invalid")
             print("\n==============================================\n")
-           
+        
+        elif pilih == 111 :
+            print("\nTerimakasih sudah belanja :D\n")       
+            break
 
         else:
             print("Opsi tidak valid.")
