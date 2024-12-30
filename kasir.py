@@ -44,7 +44,7 @@ while True :
         if kem >= 0 :
             print("\nKembalian : ", kem)
         elif kem < 0 :
-            print("uang anda kurang:(")
+            print("uang anda kurang :(")
         else :
             print("invalid")
 
